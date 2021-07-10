@@ -1,5 +1,5 @@
 {
   "compilerOptions": {
-    "typeRoots": ["./node_modules/@types", "../shared/index.d.ts"]
+    "typeRoots": ["../shared/index.d.ts", "../node_modules/@types", "./node_modules/@types"]
   }
 }
