@@ -1,4 +1,4 @@
-import { Spacing } from "./spacing.types";
+import { Spacing } from "@lb/shared";
 
 const backupSpacing: Spacing = {
   xs: 6,

@@ -1,5 +1,5 @@
 import backupTypography from './backupTypography';
-import { Typography } from './typography.types';
+import { Typography } from "@lb/shared";
 
 const makeTypographyByCode = (code?: string): Typography => {
   try {

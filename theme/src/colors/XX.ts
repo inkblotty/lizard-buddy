@@ -1,4 +1,4 @@
-import type { Colors } from './colors.types';
+import type { Colors } from '@lb/shared';
 
 /** used only for testing */
 const XXTestColors: Colors = {

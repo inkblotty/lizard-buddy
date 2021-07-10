@@ -1,4 +1,4 @@
-import type { Colors } from './colors.types';
+import type { Colors } from '@lb/shared';
 
 const backupColors: Colors = {
   primary: {

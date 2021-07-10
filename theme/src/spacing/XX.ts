@@ -1,4 +1,4 @@
-import { Spacing } from "./spacing.types";
+import { Spacing } from "@lb/shared";
 
 /** used only for testing */
 const XXTestSpacing: Spacing = {

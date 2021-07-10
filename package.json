@@ -4,5 +4,5 @@
   "author": "inkblotty",
   "license": "MIT",
   "private": true,
-  "workspaces": ["@lb/gui", "@lb/server", "@lb/theme"]
+  "workspaces": ["gui", "server", "theme", "shared"]
 }

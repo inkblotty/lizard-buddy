@@ -1,4 +1,4 @@
-import { Typography } from "./typography.types"
+import { Typography } from "@lb/shared";
 
 /** used only for testing */
 const XXTestTypography: Typography = {

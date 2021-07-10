@@ -1,4 +1,4 @@
-import { Radii } from "./radii.types";
+import { Radii } from "@lb/shared";
 
 const XXTestRadii: Radii = {
   sm: 4,

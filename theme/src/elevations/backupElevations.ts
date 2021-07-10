@@ -1,4 +1,4 @@
-import { Elevations } from "./elevations.types";
+import { Elevations } from "@lb/shared";
 
 const backupElevations: Elevations = {
   '01': '0px 2px 15px rgba(108, 108, 108, 0.1)',

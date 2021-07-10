@@ -1,5 +1,5 @@
 import backupElevations from './backupElevations';
-import { Elevations } from './elevations.types';
+import { Elevations } from "@lb/shared";
 
 const elevationsByCode = (code?: string): Elevations => {
   try {

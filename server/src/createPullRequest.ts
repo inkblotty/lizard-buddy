@@ -31,7 +31,7 @@ const createPR = async (options: PROptions): Promise<any> => {
   const { title = backupTitle, body = backupBody, head } = options;
   try {
     const fullBody = !body?.includes(now) ? `${body}\n\n${now}` : body;
-    console.log('%c\nSubmitting your PR to lizard-buddy repo...', { color: logColor })
+    console.log('%c\nSubmitting your PR to lizard-buddy repo...', `color: ${logColor}`)
     return await octokit.request(
       `POST /repos/{owner}/{repo}/pulls`, { owner, repo, title, body: fullBody, head, base: baseBranch }
     );

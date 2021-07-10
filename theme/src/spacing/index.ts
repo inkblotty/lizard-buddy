@@ -1,5 +1,5 @@
 import backupSpacing from "./backupSpacing";
-import { Spacing } from "./spacing.types";
+import { Spacing } from "@lb/shared";
 
 const makeSpacingByCode = (code?: string): Spacing => {
   try {

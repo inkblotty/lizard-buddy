@@ -1,4 +1,4 @@
-import { Elevations } from "./elevations.types";
+import { Elevations } from "@lb/shared";
 
 /** used only for testing */
 const XXTestElevations: Elevations = {

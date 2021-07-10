@@ -1,5 +1,5 @@
 import backupColors from "./backupColors";
-import { Colors } from "./colors.types";
+import type { Colors } from '@lb/shared';
 
 const colorsByCode = (code?: string): Colors => {
   try {

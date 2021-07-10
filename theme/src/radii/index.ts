@@ -1,5 +1,5 @@
 import backupRadii from './backupRadii';
-import { Radii } from './radii.types';
+import { Radii } from "@lb/shared";
 
 const makeRadiiByCode = (code?: string): Radii => {
   try {
