@@ -1,0 +1,8 @@
+{
+  "name": "lizard-buddy",
+  "version": "1.0.0",
+  "author": "inkblotty",
+  "license": "MIT",
+  "private": true,
+  "workspaces": ["@lb/gui", "@lb/server", "@lb/theme"]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "@lb/theme",
+  "version": "1.0.0",
+  "author": "inkblotty",
+  "license": "MIT",
+  "files": ["lib/**/*"],
+  "description": "Your lizard's best Emotion theming friend",
+  "keywords": ["theme", "typescript", "emotion"],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "compile": "tsc",
+    "test": "jest",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "eslint -p tsconfig.json",
+    "prepare": "yarn compile",
+    "prepublishOnly": "yarn test && yarn run lint",
+    "preversion": "yarn run lint",
+    "version": "yarn run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.4.0",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.3.1"
+  }
+}
