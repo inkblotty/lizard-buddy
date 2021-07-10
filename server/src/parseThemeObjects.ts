@@ -1,0 +1,1 @@
+const logColor = '#4EA5D9';
