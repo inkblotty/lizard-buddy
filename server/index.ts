@@ -1,9 +1,12 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import * as routes from './src/routes';
+
+dotenv.config();
 
 const app = express();
 app.use(express.json());
-const port = 8080; // default port to listen
+const port = process.env.SERVER_PORT;
 
 routes.register(app);
 

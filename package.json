@@ -4,5 +4,16 @@
   "author": "inkblotty",
   "license": "MIT",
   "private": true,
-  "workspaces": ["gui", "server", "theme", "shared"]
+  "workspaces": [
+    "gui",
+    "server",
+    "theme",
+    "shared"
+  ],
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0"
+  }
 }
