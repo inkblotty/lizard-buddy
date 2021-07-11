@@ -2,7 +2,7 @@ import { Octokit } from "@octokit/core";
 
 const logColor = '#EF476F';
 
-const GH_AUTH_TOKEN = '';
+const GH_AUTH_TOKEN = process.env.GH_ACCESS_TOKEN;
 const octokit = new Octokit({ auth: GH_AUTH_TOKEN });
 const owner = 'inkblotty';
 const repo = 'lizard-buddy';
