@@ -17,11 +17,14 @@ export default async () => {
   const branchName = `${(new Date()).getTime()}-generated-branch`;
   await createBranch(branchName);
 
+  // get that branch info? save it to a temp directory? pass it around?
+  // or get that branch info and push changes entirely in the remote and never have them locally?
+
   // parseThemeObjects
 
   // write these files to this branch
 
-  // push all changes to branch
+  // add, commit, and push all changes to branch
 
   // pass along branch name to createPullRequest
 }
