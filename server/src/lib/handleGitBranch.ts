@@ -7,11 +7,10 @@ const owner = 'inkblotty';
 const repo = 'lizard-buddy';
 
 // create new branch
-const createBranch = async (branchName: string) => {
+const createBranch = async (branchName: string) => (
   octokit.request(
     `POST /repos/{owner}/{repo}/git/refs/heads/${branchName}`, { owner, repo }
-  );
-}
+));
 
 export default async () => {
   const branchName = `${(new Date()).getTime()}-generated-branch`;
