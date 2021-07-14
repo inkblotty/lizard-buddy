@@ -4,5 +4,20 @@
   "author": "inkblotty",
   "license": "MIT",
   "private": true,
-  "workspaces": ["gui", "server", "theme", "shared"]
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inkblotty/lizard-buddy"
+  },
+  "workspaces": [
+    "gui",
+    "server",
+    "theme",
+    "shared"
+  ],
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0"
+  }
 }

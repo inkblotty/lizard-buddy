@@ -2,7 +2,7 @@ import { Octokit } from "@octokit/core";
 
 const logColor = '#EF476F';
 
-const GH_AUTH_TOKEN = '';
+const GH_AUTH_TOKEN = process.env.GH_ACCESS_TOKEN;
 const octokit = new Octokit({ auth: GH_AUTH_TOKEN });
 const owner = 'inkblotty';
 const repo = 'lizard-buddy';
@@ -27,17 +27,19 @@ interface PROptions {
    */
   head: string;
 }
-const createPR = async (options: PROptions): Promise<any> => {
+const createPullRequest = async (options: PROptions): Promise<any> => {
   const { title = backupTitle, body = backupBody, head } = options;
   try {
     const fullBody = !body?.includes(now) ? `${body}\n\n${now}` : body;
     console.log('%c\nSubmitting your PR to lizard-buddy repo...', `color: ${logColor}`)
-    return await octokit.request(
+    const response = await octokit.request(
       `POST /repos/{owner}/{repo}/pulls`, { owner, repo, title, body: fullBody, head, base: baseBranch }
     );
+    console.log(`%c\nSuccessfully submitted PR for ${head}! Go check out github.com/inkblotty/lizard-buddy/pulls.`, `color: ${logColor}`);
+    return response;
   } catch (err) {
-    // log why it failed somewhere
+    console.log(`%c Failed to create PR for ${head}`, `color: ${logColor}`, err);
     throw err;
   }
 }
-export default createPR;
+export default createPullRequest;
