@@ -1,0 +1,5 @@
+describe('parseThemeObjects', () => {
+  test('colors', () => {
+
+  });
+});

@@ -15,11 +15,13 @@ const createBranch = async (branchName: string) => (
 ));
 
 export default async (code: string, data: any) => {
-  const branchName = `${(new Date()).getTime()}-generated-branch`;
-  await createBranch(branchName);
+  // before anything starts, validate the data
 
   // parseThemeObjects
   const themeObjs = [];
+
+  const branchName = `${(new Date()).getTime()}-generated-branch`;
+  await createBranch(branchName);
 
   // forEach Theme Object, writeToTheme using branchName
   await Promise.all(themeObjs.map(({ content, category }) => {

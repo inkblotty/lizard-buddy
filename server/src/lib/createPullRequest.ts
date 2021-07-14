@@ -38,7 +38,6 @@ const createPullRequest = async (options: PROptions): Promise<any> => {
     console.log(`%c\nSuccessfully submitted PR for ${head}! Go check out github.com/inkblotty/lizard-buddy/pulls.`, `color: ${logColor}`);
     return response;
   } catch (err) {
-    // log why it failed somewhere
     console.log(`%c Failed to create PR for ${head}`, `color: ${logColor}`, err);
     throw err;
   }

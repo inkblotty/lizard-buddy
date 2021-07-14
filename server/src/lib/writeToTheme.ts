@@ -31,6 +31,7 @@ const writeToTheme = async (code: string, content: string, config: WriteToThemeC
     console.log(`%c\nSuccessfully created file: ${category}/${code}.ts`, `color: ${logColor}`);
   } catch (err) {
     console.log(`%c\nFailed to create file: ${category}/${code}.ts`, `color: ${logColor}`);
+    throw err;
   }
 };
 export default writeToTheme;
