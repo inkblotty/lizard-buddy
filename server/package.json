@@ -12,6 +12,7 @@
   "dependencies": {
     "@lb/shared": "1.0.0",
     "@octokit/core": "^3.5.1",
+    "@octokit/plugin-create-or-update-text-file": "^1.0.3",
     "express": "^4.17.1",
     "jest": "^27.0.6",
     "ts-node": "^10.1.0",

@@ -1773,6 +1773,14 @@
   resolved "https://registry.yarnpkg.com/@octokit/openapi-types/-/openapi-types-8.2.1.tgz#102e752a7378ff8d21057c70fd16f1c83856d8c5"
   integrity sha512-BJz6kWuL3n+y+qM8Pv+UGbSxH6wxKf/SBs5yzGufMHwDefsa+Iq7ZGy1BINMD2z9SkXlIzk1qiu988rMuGXEMg==
 
+"@octokit/plugin-create-or-update-text-file@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@octokit/plugin-create-or-update-text-file/-/plugin-create-or-update-text-file-1.0.3.tgz#ea1bf480e977c553e955eebb63c18d4809dbc077"
+  integrity sha512-GNqgIrBpoMiX03Sd8PwjPNP/ze/EiJhSc8Bd1sLeakSbTYmVpMeCVcz7DYqRanbfnc+gM7RhEPM4GbefEPxb9Q==
+  dependencies:
+    "@octokit/request-error" "^2.0.5"
+    "@octokit/types" "^6.16.1"
+
 "@octokit/request-error@^2.0.5", "@octokit/request-error@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@octokit/request-error/-/request-error-2.1.0.tgz#9e150357831bfc788d13a4fd4b1913d60c74d677"

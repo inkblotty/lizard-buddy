@@ -1,4 +1,6 @@
 import { Octokit } from "@octokit/core";
+import createPullRequest from "./createPullRequest";
+import writeToTheme from "./writeToTheme";
 
 const logColor = '#FCFF6C';
 const GH_AUTH_TOKEN = process.env.GH_ACCESS_TOKEN;
@@ -12,18 +14,18 @@ const createBranch = async (branchName: string) => (
     `POST /repos/{owner}/{repo}/git/refs/heads/${branchName}`, { owner, repo }
 ));
 
-export default async () => {
+export default async (code: string, data: any) => {
   const branchName = `${(new Date()).getTime()}-generated-branch`;
   await createBranch(branchName);
 
-  // get that branch info? save it to a temp directory? pass it around?
-  // or get that branch info and push changes entirely in the remote and never have them locally?
-
   // parseThemeObjects
+  const themeObjs = [];
 
-  // write these files to this branch
-
-  // add, commit, and push all changes to branch
+  // forEach Theme Object, writeToTheme using branchName
+  await Promise.all(themeObjs.map(({ content, category }) => {
+    return writeToTheme(code, content, { category, branch: branchName });
+  }));
 
   // pass along branch name to createPullRequest
+  await createPullRequest({ head: branchName });
 }
