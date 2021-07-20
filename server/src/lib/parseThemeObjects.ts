@@ -1,4 +1,5 @@
 import { BaseTheme } from "@lb/shared";
+import parseColors from "./parsers/parseColors";
 
 const logColor = '#4EA5D9';
 
@@ -11,22 +12,32 @@ interface ParsedTheme {
   spacing: string;
   typography: string;
 }
-const parseThemeObjects = async (theme: Partial<BaseTheme>): Promise<ParsedTheme> => {
-  return Promise.all(Object.values(theme).reduce((prev, [key, value]) => {
+const parseThemeObjects = (theme: Partial<BaseTheme>, code: string): ParsedTheme => {
+  console.log('%cConverting theme object to writable strings...', `color: ${logColor}`);
+  return Object.entries(theme).reduce((prev: ParsedTheme, [key, value]) => {
     switch (key) {
       case 'colors': {
-        return prev;
+        return {
+          ...prev,
+          color: parseColors(value as BaseTheme['colors'], code),
+        };
       }
       case 'elevations': {
         return prev;
       }
-      case '': {
+      case 'radii': {
+        return prev;
+      }
+      case 'spacing': {
+        return prev;
+      }
+      case 'typography': {
         return prev;
       }
       default: {
         return prev;
       }
     }
-  }), {} as ParsedTheme);
+  }, {} as ParsedTheme);
 }
 export default parseThemeObjects;
