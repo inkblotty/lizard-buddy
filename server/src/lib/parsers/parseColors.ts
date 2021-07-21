@@ -93,6 +93,7 @@ const ${code.toUpperCase()}Colors: Colors = {
     900: ${input.reward[900] ? `'${input.reward[900]}'` : undefined},
   }
 };
-export default ${code.toUpperCase()}Colors;`
+export default ${code.toUpperCase()}Colors;
+`
 }
 export default parseColors;

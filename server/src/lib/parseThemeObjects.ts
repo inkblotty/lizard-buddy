@@ -1,5 +1,7 @@
 import { BaseTheme } from "@lb/shared";
 import parseColors from "./parsers/parseColors";
+import parseElevations from "./parsers/parseElevations";
+import parseRadii from "./parsers/parseRadii";
 
 const logColor = '#4EA5D9';
 
@@ -23,10 +25,16 @@ const parseThemeObjects = (theme: Partial<BaseTheme>, code: string): ParsedTheme
         };
       }
       case 'elevations': {
-        return prev;
+        return {
+          ...prev,
+          elevations: parseElevations(value as BaseTheme['elevations'], code),
+        };
       }
       case 'radii': {
-        return prev;
+        return {
+          ...prev,
+          radii: parseRadii(value as BaseTheme['radii'], code),
+        };
       }
       case 'spacing': {
         return prev;
