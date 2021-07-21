@@ -1,2 +1,5 @@
 "use strict";
 exports.__esModule = true;
+export {
+  isColor,
+} from './types';

@@ -2,6 +2,8 @@ import { BaseTheme } from "@lb/shared";
 import parseColors from "./parsers/parseColors";
 import parseElevations from "./parsers/parseElevations";
 import parseRadii from "./parsers/parseRadii";
+import parseSpacing from "./parsers/parseSpacing";
+import parseTypography from "./parsers/parseTypography";
 
 const logColor = '#4EA5D9';
 
@@ -37,10 +39,16 @@ const parseThemeObjects = (theme: Partial<BaseTheme>, code: string): ParsedTheme
         };
       }
       case 'spacing': {
-        return prev;
+        return {
+          ...prev,
+          spacing: parseSpacing(value as BaseTheme['spacing'], code),
+        };
       }
       case 'typography': {
-        return prev;
+        return {
+          ...prev,
+          typography: parseTypography(value as BaseTheme['typography'], code),
+        };
       }
       default: {
         return prev;
