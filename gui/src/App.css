@@ -59,12 +59,17 @@
   background-color: #efefef;
 } */
 
-.ColorInput {
+.ColorInput,
+.ShadowInput {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 16px;
   width: 72px;
+}
+
+.ShadowInput {
+  width: 164px;
 }
 
 .ColorInput-Circle {
@@ -76,10 +81,22 @@
   width: 30px;
 }
 
-.ColorInput input {
+.ShadowInput-Box {
+  height: 30px;
+  margin: 8px auto;
+  width: 30px;
+}
+
+.ColorInput input,
+.ShadowInput textarea {
   width: 100%;
 }
 
-.ColorInput label {
+.ShadowInput textarea {
+  height: 3em;
+}
+
+.ColorInput label,
+.ShadowInput label {
   width: 100%;
 }

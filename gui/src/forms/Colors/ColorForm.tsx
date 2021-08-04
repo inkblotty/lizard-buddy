@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { BaseTheme } from '@lb/shared';
 import ColorFormSection from './ColorFormSection';
 
@@ -6,16 +6,12 @@ export interface ColorFormProps {
   prepopulatedColors: BaseTheme['colors'];
 };
 const ColorForm: React.FC<ColorFormProps> = ({ prepopulatedColors }) => {
-  const onChange = useCallback((value, key) => {
-
-  }, []);
-
   const sections = Object.keys(prepopulatedColors).map(sectionKey => (
     <ColorFormSection
       key={sectionKey}
-      onChange={onChange}
       sectionTitle={sectionKey}
-      values={prepopulatedColors[sectionKey as 'primary']}
+      // @ts-ignore
+      keys={Object.keys(prepopulatedColors[sectionKey as 'primary'])}
     />
   ));
 

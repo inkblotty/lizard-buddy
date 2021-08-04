@@ -1,20 +1,18 @@
-import React, { useCallback } from 'react';
+import { useField } from 'react-final-form';
 
 export interface ShadowInputProps {
   label: string;
   name: string;
-  onChange: (value: string) => void;
-  value?: string;
   variant?: 'li';
 };
-const ShadowInput: React.FC<ShadowInputProps> = ({ label, name, onChange, value, variant }) => {
-  const handleChange = useCallback(e => onChange(e.target.value), [onChange]);
+const ShadowInput: React.FC<ShadowInputProps> = ({ label, name, variant }) => {
+  const { input } = useField(name);
   const Element = variant || 'div';
   return (
     <Element className='ShadowInput'>
-      <label htmlFor={name}>{label}</label>
-      <div aria-hidden className='ShadowInput-Box' style={{ boxShadow: value }} />
-      <input value={value} name={name} onChange={handleChange} />
+      <label htmlFor={input.name}>{label}</label>
+      <div aria-hidden className='ShadowInput-Box' style={{ boxShadow: input.value }} />
+      <textarea value={input.value} name={input.name} onChange={input.onChange} />
     </Element>
   );
 };
