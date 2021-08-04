@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+/* todo: move styles into component modules */
+.Form {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.Form ul {
+  display: flex;
+}
+
+.ColorInput {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ColorInput-Circle {
+  background-color: #dddddd;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}
