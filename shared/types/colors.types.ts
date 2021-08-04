@@ -41,7 +41,7 @@ export interface Colors {
   information: ColorObj;
   neutral: ColorObj;
   reward?: ColorObj;
-  layout: {
+  layout?: {
     backgroundColor: string;
     alternateTextColor: string;
     textColor: string;

@@ -18,7 +18,7 @@ export default async (code: string, data: any) => {
   // before anything starts, validate the data
 
   // parseThemeObjects
-  const themeObjs = [];
+  const themeObjs: any[] = [];
 
   const branchName = `${(new Date()).getTime()}-generated-branch`;
   await createBranch(branchName);
