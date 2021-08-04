@@ -1,4 +1,4 @@
-export interface Elevations {
+export interface Shadows {
   '01': string;
   '02': string;
   '03': string;
