@@ -3,16 +3,16 @@ import { Typography } from "@lb/shared";
 /** used only for testing */
 const XXTestTypography: Typography = {
   body: {
-    main: 'Verdana',
-    bold: 'Verdana',
+    main: 'Arial',
+    bold: 'Arial',
   },
   headings: {
-    main: 'Verdana',
-    bold: 'Verdana',
+    main: 'Arial',
+    bold: 'Arial',
   },
   alternate: {
-    main: 'Verdana',
-    bold: 'Verdana',
+    main: 'Arial',
+    bold: 'Arial',
   },
 };
 export default XXTestTypography;
