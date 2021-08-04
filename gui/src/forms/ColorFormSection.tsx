@@ -7,23 +7,29 @@ import Color from '../inputs/Color';
  */
 
 export interface ColorFormSectionProps {
-  keys: (keyof BaseTheme['colors']['primary'])[];
   onChange: (value: string, name: string) => void;
   sectionTitle: string;
   values: BaseTheme['colors']['primary'];
 };
-const ColorFormSection: React.FC<ColorFormSectionProps> = ({ keys, sectionTitle, values, onChange }) => {
+const ColorFormSection: React.FC<ColorFormSectionProps> = ({ sectionTitle, values, onChange }) => {
   return (
-    <ul title={sectionTitle}>
-      {keys.map(key => (
+    <>
+    <h3>
+      {sectionTitle}
+    </h3>
+    <ul>
+      {Object.keys(values).map(key => (
         <Color
+          key={`${sectionTitle}-${key}`}
           label={key.toString()}
           name={key.toString()}
           onChange={(value) => onChange(value, key.toString())}
-          value={values[key]}
+          value={values[key as unknown as keyof BaseTheme['colors']['primary']]}
+          variant='li'
         />
       ))}
     </ul>
+    </>
   );
 };
 export default ColorFormSection;

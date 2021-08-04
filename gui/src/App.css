@@ -15,7 +15,6 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,21 +40,46 @@
 .Form {
   flex-wrap: wrap;
   display: flex;
+  padding: 0 16px;
+}
+
+.Form h2 {
+  width: 100%;
 }
 
 .Form ul {
   display: flex;
+  border-bottom: 2px solid #282c34;
+  margin: 0;
+  padding: 0 0 8px;
+  width: 100%;
 }
+
+/* .Form ul:nth-of-type(2n) {
+  background-color: #efefef;
+} */
 
 .ColorInput {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0 16px;
+  width: 72px;
 }
 
 .ColorInput-Circle {
   background-color: #dddddd;
+  border: 1px solid #fff;
   border-radius: 50%;
   height: 30px;
+  margin: 8px 0;
   width: 30px;
+}
+
+.ColorInput input {
+  width: 100%;
+}
+
+.ColorInput label {
+  width: 100%;
 }

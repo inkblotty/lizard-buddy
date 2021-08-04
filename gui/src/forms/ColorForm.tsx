@@ -12,8 +12,7 @@ const ColorForm: React.FC<ColorFormProps> = ({ prepopulatedColors }) => {
 
   const sections = Object.keys(prepopulatedColors).map(sectionKey => (
     <ColorFormSection
-    // @ts-ignore TODO fix me
-      keys={Object.keys(prepopulatedColors[sectionKey as 'primary'])}
+      key={sectionKey}
       onChange={onChange}
       sectionTitle={sectionKey}
       values={prepopulatedColors[sectionKey as 'primary']}

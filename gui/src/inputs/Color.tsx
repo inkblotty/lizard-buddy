@@ -5,15 +5,17 @@ export interface ColorProps {
   name: string;
   onChange: (value: string) => void;
   value?: string;
+  variant?: 'li';
 };
-const Color: React.FC<ColorProps> = ({ label, name, onChange, value }) => {
-  const handleChange = useCallback(e => onChange(e.target.value), []);
+const Color: React.FC<ColorProps> = ({ label, name, onChange, value, variant }) => {
+  const handleChange = useCallback(e => onChange(e.target.value), [onChange]);
+  const Element = variant || 'div';
   return (
-    <div className='ColorInput'>
-      <div className='ColorInput-Circle' />
+    <Element className='ColorInput'>
       <label htmlFor={name}>{label}</label>
+      <div aria-hidden className='ColorInput-Circle' style={{ backgroundColor: value }} />
       <input value={value} name={name} onChange={handleChange} />
-    </div>
+    </Element>
   );
 };
 export default Color;
