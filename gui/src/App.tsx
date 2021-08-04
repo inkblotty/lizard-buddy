@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ColorForm from './forms/ColorForm';
+import ColorForm from './forms/Colors/ColorForm';
 
 const placeholder = {
   primary: {
@@ -99,7 +99,9 @@ function App() {
       <header className="App-header">
         Lizard Buddy
       </header>
-      <ColorForm prepopulatedColors={placeholder} />
+      <form>
+        <ColorForm prepopulatedColors={placeholder} />
+      </form>
     </div>
   );
 }

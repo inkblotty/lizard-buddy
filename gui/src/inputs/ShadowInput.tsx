@@ -1,21 +1,21 @@
 import React, { useCallback } from 'react';
 
-export interface ColorProps {
+export interface ShadowInputProps {
   label: string;
   name: string;
   onChange: (value: string) => void;
   value?: string;
   variant?: 'li';
 };
-const Color: React.FC<ColorProps> = ({ label, name, onChange, value, variant }) => {
+const ShadowInput: React.FC<ShadowInputProps> = ({ label, name, onChange, value, variant }) => {
   const handleChange = useCallback(e => onChange(e.target.value), [onChange]);
   const Element = variant || 'div';
   return (
-    <Element className='ColorInput'>
+    <Element className='ShadowInput'>
       <label htmlFor={name}>{label}</label>
-      <div aria-hidden className='ColorInput-Circle' style={{ backgroundColor: value }} />
+      <div aria-hidden className='ShadowInput-Box' style={{ boxShadow: value }} />
       <input value={value} name={name} onChange={handleChange} />
     </Element>
   );
 };
-export default Color;
+export default ShadowInput;
