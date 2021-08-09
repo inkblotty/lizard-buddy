@@ -2,15 +2,9 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+:root {
+  --footer-height: 40px;
+  --header-height: 30px;
 }
 
 .App-header {
@@ -21,26 +15,18 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  height: var(--header-height);
 }
 
 /* todo: move styles into component modules */
 .Form {
+  align-items: flex-start;
   flex-wrap: wrap;
   display: flex;
+  height: calc(100vh - var(--header-height) - var(--footer-height));
+  overflow-y: scroll;
   padding: 0 16px;
+  margin-bottom: var(--footer-height);
 }
 
 .Form h2 {
@@ -99,4 +85,49 @@
 .ColorInput label,
 .ShadowInput label {
   width: 100%;
+}
+
+.ThemeKeyMenu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 400px;
+}
+
+.ThemeKeyMenu button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  width: 100%;
+}
+
+.ThemeKeyMenu button.isActive {
+  background-color:#dddddd;
+}
+
+main {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+}
+
+.SubmitButtonWrapper {
+  align-items: center;
+  background-color: #fff;
+  bottom: 0;
+  display: flex;
+  height: var(--footer-height);
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+}
+
+.SubmitButtonWrapper button {
+  background-color: #282c34;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px 16px;
 }

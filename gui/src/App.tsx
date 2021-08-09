@@ -6,8 +6,10 @@ import { BaseTheme } from '../../shared';
 import './App.css';
 import ColorForm from './forms/Colors/ColorForm';
 import ShadowForm from './forms/Shadows/ShadowForm';
+import ThemeKeyMenu from './navigation/ThemeKeyMenu';
 
 function App() {
+  const [activeThemeKey, setActiveThemeKey] = useState<string>('colors');
   const [code, setCode] = useState<string>();
   const [existingTheme, setExistingTheme] = useState<BaseTheme>();
 
@@ -26,6 +28,10 @@ function App() {
     console.log('values: ', values);
   }, []);
 
+  const handleNavigation = useCallback((key) => {
+    setActiveThemeKey(key);
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -34,18 +40,32 @@ function App() {
       </header>
       {existingTheme
         ? (
-          <Form
-            initialValues={existingTheme}
-            onSubmit={submitToGH}
-            render={({ handleSubmit }) => (
-            <form>
-              <ColorForm prepopulatedColors={existingTheme['colors']} />
-              <ShadowForm prepopulatedShadows={existingTheme['shadows']} />
-              <button type="submit" onClick={handleSubmit}>
-                Submit for Review
-              </button>
-            </form>
-          )} />
+          <main>
+            <ThemeKeyMenu
+              activeKey={activeThemeKey}
+              keys={Object.keys(existingTheme)}
+              onClick={handleNavigation}
+            />
+            <Form
+              initialValues={existingTheme}
+              onSubmit={submitToGH}
+              render={({ handleSubmit }) => (
+              <form>
+                {activeThemeKey === 'colors' && (
+                  <ColorForm prepopulatedColors={existingTheme['colors']} />
+                )}
+                {activeThemeKey === 'shadows' && (
+                  <ShadowForm prepopulatedShadows={existingTheme['shadows']} />
+                )}
+                <div className='SubmitButtonWrapper'>
+                  <button type="submit" onClick={handleSubmit}>
+                    Submit for Review
+                  </button>
+                </div>
+              </form>
+              
+            )} />
+          </main>
         ) : 'Loading...'
       }
     </div>
