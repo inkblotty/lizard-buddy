@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Form } from 'react-final-form';
+
+import dataClient from './dataClient';
 import { BaseTheme } from '../../shared';
 import './App.css';
 import ColorForm from './forms/Colors/ColorForm';
@@ -11,6 +13,13 @@ function App() {
 
   useEffect(() => {
     // request existing theme
+    const getAndAssignTheme = async () => {
+      const { data } = await dataClient.get(`/${code || 'AA'}`);
+      console.log('theme: ', data);
+      setExistingTheme(data);
+    }
+
+    getAndAssignTheme();
   }, [code]);
 
   const submitToGH = useCallback(async (values) => {
