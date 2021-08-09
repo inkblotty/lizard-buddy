@@ -1,8 +1,14 @@
+"use strict";
+
 export type {
   BaseTheme,
   Colors,
-  Elevations,
+  Shadows,
   Radii,
   Spacing,
   Typography,
+} from './types';
+
+export {
+  isColor,
 } from './types';

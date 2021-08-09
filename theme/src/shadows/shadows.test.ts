@@ -1,6 +1,6 @@
 import getElevations from './index';
 
-import backupElevations from './backupElevations';
+import backupElevations from './backupShadows';
 import XXElevations from './XX';
 
 describe('Elevations', () => {

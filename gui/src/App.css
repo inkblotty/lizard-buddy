@@ -1,38 +1,143 @@
+:root {
+  --footer-height: 40px;
+  --header-height: 30px;
+  --border-color: #d2d2d2;
+}
+
+input,
+textarea {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: none;
+  padding: 2px 4px;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  height: var(--header-height);
 }
 
-.App-link {
-  color: #61dafb;
+/* todo: move styles into component modules */
+.Form {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  display: flex;
+  height: calc(100vh - var(--header-height) - var(--footer-height));
+  overflow-y: scroll;
+  padding: 0 16px;
+  margin-bottom: var(--footer-height);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Form h2 {
+  width: 100%;
+}
+
+.Form ul {
+  display: flex;
+  border-bottom: 2px solid var(--border-color);
+  margin: 0;
+  padding: 0 0 8px;
+  width: 100%;
+}
+
+.ColorInput,
+.ShadowInput {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 16px;
+  width: 72px;
+}
+
+.ShadowInput {
+  width: 164px;
+}
+
+.ColorInput-Circle {
+  background-color: #dddddd;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  height: 30px;
+  margin: 8px 0;
+  width: 30px;
+}
+
+.ShadowInput-Box {
+  height: 30px;
+  margin: 8px auto;
+  width: 30px;
+}
+
+.ColorInput input,
+.ShadowInput textarea {
+  width: 100%;
+}
+
+.ShadowInput textarea {
+  height: 3em;
+}
+
+.ColorInput label,
+.ShadowInput label {
+  width: 100%;
+}
+
+.ThemeKeyMenu {
+  border-right: 1px solid var(--border-color);
+  height: calc(100vh - var(--header-height));
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100px;
+}
+
+.ThemeKeyMenu button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px 8px;
+  width: 100%;
+}
+
+.ThemeKeyMenu button.isActive {
+  background-color:#dddddd;
+}
+
+main {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+}
+
+.SubmitButtonWrapper {
+  align-items: center;
+  background-color: #fff;
+  bottom: 0;
+  display: flex;
+  height: var(--footer-height);
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+}
+
+.SubmitButtonWrapper button {
+  background-color: #282c34;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px 16px;
 }

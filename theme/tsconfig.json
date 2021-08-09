@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "lib",
+    "declaration": true,
     "typeRoots": ["../shared/index.d.ts", "../node_modules/@types", "./node_modules/@types"]
   }
 }

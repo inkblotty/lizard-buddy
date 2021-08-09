@@ -89,6 +89,6 @@ const XXTestColors: Colors = {
     700: '#18849F',
     800: '#08677E',
     900: undefined,
-  }
+  },
 };
 export default XXTestColors;
