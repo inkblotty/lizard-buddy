@@ -1,10 +1,20 @@
-.App {
-  text-align: center;
-}
-
 :root {
   --footer-height: 40px;
   --header-height: 30px;
+  --border-color: #d2d2d2;
+}
+
+input,
+textarea {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: none;
+  padding: 2px 4px;
+}
+
+.App {
+  text-align: center;
 }
 
 .App-header {
@@ -35,15 +45,11 @@
 
 .Form ul {
   display: flex;
-  border-bottom: 2px solid #d2d2d2;
+  border-bottom: 2px solid var(--border-color);
   margin: 0;
   padding: 0 0 8px;
   width: 100%;
 }
-
-/* .Form ul:nth-of-type(2n) {
-  background-color: #efefef;
-} */
 
 .ColorInput,
 .ShadowInput {
@@ -88,16 +94,20 @@
 }
 
 .ThemeKeyMenu {
+  border-right: 1px solid var(--border-color);
+  height: calc(100vh - var(--header-height));
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 400px;
+  width: 100px;
 }
 
 .ThemeKeyMenu button {
   background-color: transparent;
   border: 0;
   cursor: pointer;
+  font-size: 16px;
+  padding: 4px 8px;
   width: 100%;
 }
 
