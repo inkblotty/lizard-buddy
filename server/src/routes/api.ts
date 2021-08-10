@@ -7,7 +7,8 @@ export const register = (app: express.Application) => {
     // validate if the code is already used
     const { code } = req.params;
     const existingTheme = getThemeIfExists(code);
-    if (existingTheme) {
+    console.log('existingTheme', existingTheme);
+    if (existingTheme && !existingTheme.isDefaultTheme) {
       // TODO: allow edits
       throw new Error(`Theme: ${code} already exists.`);
     }

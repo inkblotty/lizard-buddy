@@ -5,7 +5,9 @@ import spacing from './spacing';
 import typography from './typography';
 import { BaseTheme } from '@lb/shared';
 
+const existingThemeCodes = ['XX'];
 const getTheme = (code?: string): BaseTheme => ({
+  isDefaultTheme: !existingThemeCodes.includes(code),
   colors: colors(code),
   shadows: shadows(code),
   radii: radii(code),

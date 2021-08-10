@@ -9,6 +9,7 @@ export {
 };
 
 export interface BaseTheme {
+  isDefaultTheme?: boolean;
   colors: Colors;
   shadows: Shadows; // rename Shadows
   radii: Radii;

@@ -9,7 +9,7 @@ const ThemeKeyMenu: React.FC<ThemeKeyMenuProps> = ({ activeKey, keys, onClick })
   return (
     <ul className='ThemeKeyMenu'>
       {keys.map(key => (
-        <li>
+        <li key={`navigation-${key}`}>
           <button
             className={activeKey === key ? 'isActive' : ''}
             onClick={() => onClick(key)}

@@ -17,6 +17,9 @@ const createBranch = async (branchName: string) => (
 export default async (code: string, data: any) => {
   // before anything starts, validate the data
 
+  console.log('data', data);
+  return;
+
   // parseThemeObjects
   const themeObjs: any[] = [];
 
