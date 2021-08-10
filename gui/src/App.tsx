@@ -17,9 +17,9 @@ function App() {
   useEffect(() => {
     // request existing theme
     const getAndAssignTheme = async () => {
-      const { data } = await dataClient.get(`/${code || 'AA'}`);
-      console.log('theme: ', data);
-      setExistingTheme(data);
+      const { data: { isDefaultTheme, ...theme } } = await dataClient.get(`/${code || 'AA'}`);
+      console.log('theme: ', theme);
+      setExistingTheme(theme);
     }
 
     getAndAssignTheme();

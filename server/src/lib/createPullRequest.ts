@@ -1,9 +1,7 @@
-import { Octokit } from "@octokit/core";
+import request from './request';
 
 const logColor = '#EF476F';
 
-const GH_AUTH_TOKEN = process.env.GH_ACCESS_TOKEN;
-const octokit = new Octokit({ auth: GH_AUTH_TOKEN });
 const owner = 'inkblotty';
 const repo = 'lizard-buddy';
 const baseBranch = 'main';
@@ -32,7 +30,7 @@ const createPullRequest = async (options: PROptions): Promise<any> => {
   try {
     const fullBody = !body?.includes(now) ? `${body}\n\n${now}` : body;
     console.log('%c\nSubmitting your PR to lizard-buddy repo...', `color: ${logColor}`)
-    const response = await octokit.request(
+    const response = await request(
       `POST /repos/{owner}/{repo}/pulls`, { owner, repo, title, body: fullBody, head, base: baseBranch }
     );
     console.log(`%c\nSuccessfully submitted PR for ${head}! Go check out github.com/inkblotty/lizard-buddy/pulls.`, `color: ${logColor}`);

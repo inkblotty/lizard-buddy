@@ -1,10 +1,5 @@
 import { BaseTheme } from '@lb/shared';
-import { Octokit } from "@octokit/core";
-import { createOrUpdateTextFile } from "@octokit/plugin-create-or-update-text-file";
-
-const GH_AUTH_TOKEN = process.env.GH_ACCESS_TOKEN;
-const CreaterOctokit = Octokit.plugin(createOrUpdateTextFile)
-const octokit = new CreaterOctokit({ auth: GH_AUTH_TOKEN });
+import { writeGHFile } from './request';
 
 const getPathByCategory = (category: WriteToThemeConfig['category'], code: string) => {
   const basePath = 'theme/src';
@@ -18,9 +13,10 @@ interface WriteToThemeConfig {
 }
 const writeToTheme = async (code: string, content: string, config: WriteToThemeConfig): Promise<void> => {
   const { branch, category } = config;
+  console.log('content: ', content);
   try {
     const path = getPathByCategory(category, code);
-    await octokit.createOrUpdateTextFile({
+    await writeGHFile({
       branch,
       content,
       owner: 'inkblotty',
