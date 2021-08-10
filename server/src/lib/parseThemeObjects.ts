@@ -1,6 +1,6 @@
 import { BaseTheme } from "@lb/shared";
 import parseColors from "./parsers/parseColors";
-import parseElevations from "./parsers/parseElevations";
+import parseShadows from "./parsers/parseShadows";
 import parseRadii from "./parsers/parseRadii";
 import parseSpacing from "./parsers/parseSpacing";
 import parseTypography from "./parsers/parseTypography";
@@ -11,7 +11,7 @@ const logColor = '#4EA5D9';
 interface ParsedTheme {
   /** string is a utf-8 string that can be written to file */
   colors: string;
-  elevations: string;
+  shadows: string;
   radii: string;
   spacing: string;
   typography: string;
@@ -29,7 +29,7 @@ const parseThemeObjects = (theme: Partial<BaseTheme>, code: string): ParsedTheme
       case 'elevations': {
         return {
           ...prev,
-          elevations: parseElevations(value as BaseTheme['elevations'], code),
+          elevations: parseShadows(value as BaseTheme['shadows'], code),
         };
       }
       case 'radii': {
