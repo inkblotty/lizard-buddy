@@ -43,9 +43,9 @@ export default async (code: string, data: any) => {
     category: key,
   }));
 
+  // create a branch for all this work
   const branchName = `lb-${(new Date()).getTime()}-generated-branch`;
   await createBranch(branchName);
-  console.log('after create');
 
   // forEach Theme Object, writeToTheme using branchName
   try {
@@ -53,9 +53,9 @@ export default async (code: string, data: any) => {
       return writeToTheme(code, content, { category, branch: branchName });
     }));
   } catch (err) {
-    console.error('Could not write file', err);
+    console.error('%cCould not write file', `color:${logColor}`, err);
   }
 
   // pass along branch name to createPullRequest
-  await createPullRequest({ head: branchName });
+  return createPullRequest({ head: branchName });
 }

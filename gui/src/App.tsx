@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Form } from 'react-final-form';
+import { Formik } from 'formik';
 
 import dataClient from './dataClient';
 import { BaseTheme } from '../../shared';
@@ -18,7 +18,6 @@ function App() {
     // request existing theme
     const getAndAssignTheme = async () => {
       const { data: { isDefaultTheme, ...theme } } = await dataClient.get(`/${code || 'AA'}`);
-      console.log('theme: ', theme);
       setExistingTheme(theme);
     }
 
@@ -26,11 +25,12 @@ function App() {
   }, [code]);
 
   const submitToGH = useCallback(async (values) => {
-    console.log('values: ', values);
     const postThemeForReview = async () => {
       const { data } = await dataClient.post(`/create/${code || 'AA'}`, values);
       // trigger success notification and a button to restart
       console.log(data);
+
+      // todo: error handling (like if there are already too many PRs);
     }
     if (code || 'AA') {
       postThemeForReview();
@@ -58,25 +58,25 @@ function App() {
               keys={Object.keys(existingTheme)}
               onClick={handleNavigation}
             />
-            <Form
+            <Formik
               initialValues={existingTheme}
-              onSubmit={submitToGH}
-              render={({ handleSubmit }) => (
-              <form>
-                {activeThemeKey === 'colors' && (
-                  <ColorForm prepopulatedColors={existingTheme['colors']} />
-                )}
-                {activeThemeKey === 'shadows' && (
-                  <ShadowForm prepopulatedShadows={existingTheme['shadows']} />
-                )}
-                <div className='SubmitButtonWrapper'>
-                  <button type="submit" onClick={handleSubmit}>
-                    Submit for Review
-                  </button>
-                </div>
-              </form>
-              
-            )} />
+              onSubmit={submitToGH}>
+              {() => (
+                <form>
+                  {activeThemeKey === 'colors' && (
+                    <ColorForm prepopulatedColors={existingTheme['colors']} />
+                  )}
+                  {activeThemeKey === 'shadows' && (
+                    <ShadowForm prepopulatedShadows={existingTheme['shadows']} />
+                  )}
+                  <div className='SubmitButtonWrapper'>
+                    <button type="submit">
+                      Submit for Review
+                    </button>
+                  </div>
+                </form>
+              )}
+            </Formik>
           </main>
         ) : 'Loading...'
       }
