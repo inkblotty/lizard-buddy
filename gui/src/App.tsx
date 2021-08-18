@@ -7,38 +7,50 @@ import './App.css';
 import ColorForm from './forms/Colors/ColorForm';
 import ShadowForm from './forms/Shadows/ShadowForm';
 import ThemeKeyMenu from './navigation/ThemeKeyMenu';
+import Notification, { NotificationProps } from './notification/Notification';
 
 // todo: error handling
 function App() {
   const [activeThemeKey, setActiveThemeKey] = useState<string>('colors');
-  const [code, setCode] = useState<string>();
   const [existingTheme, setExistingTheme] = useState<BaseTheme>();
+  const [notification, setNotification] = useState<NotificationProps>();
+
+  // initial code populates the form
+  const [initialCode, setInitialCode] = useState<string>();
+
+  // final code is the code submitted for review
+  const [finalCode, setFinalCode] = useState<string>();
 
   useEffect(() => {
     // request existing theme
     const getAndAssignTheme = async () => {
-      const { data: { isDefaultTheme, ...theme } } = await dataClient.get(`/${code || 'AA'}`);
+      const { data: { isDefaultTheme, ...theme } } = await dataClient.get(`/${initialCode || 'AA'}`);
       setExistingTheme(theme);
     }
 
     getAndAssignTheme();
-  }, [code]);
+  }, [initialCode]);
 
   const submitToGH = useCallback(async (values) => {
     const postThemeForReview = async () => {
-      const { data } = await dataClient.post(`/create/${code || 'AA'}`, values);
+      const { data } = await dataClient.post(`/create/${finalCode || 'AA'}`, values);
       // trigger success notification and a button to restart
       console.log(data);
 
       // todo: error handling (like if there are already too many PRs);
+
+      setNotification({
+        type: 'success',
+        content: <>{finalCode} submitted for review!</>
+      });
     }
-    if (code || 'AA') {
+    if (finalCode || 'AA') {
       postThemeForReview();
     } else {
       // trigger error notification
-      console.error('code required');
+      console.error('finalCode required');
     }
-  }, [code]);
+  }, [finalCode]);
 
   const handleNavigation = useCallback((key) => {
     setActiveThemeKey(key);
@@ -48,11 +60,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         Lizard Buddy
-        {code ? `: Editing theme ${code}` : ''}
       </header>
       {existingTheme
         ? (
           <main>
+            {notification?.type && <Notification {...notification} />}
             <ThemeKeyMenu
               activeKey={activeThemeKey}
               keys={Object.keys(existingTheme)}
@@ -61,7 +73,7 @@ function App() {
             <Formik
               initialValues={existingTheme}
               onSubmit={submitToGH}>
-              {() => (
+              {(props) => (
                 <form>
                   {activeThemeKey === 'colors' && (
                     <ColorForm prepopulatedColors={existingTheme['colors']} />
@@ -70,7 +82,14 @@ function App() {
                     <ShadowForm prepopulatedShadows={existingTheme['shadows']} />
                   )}
                   <div className='SubmitButtonWrapper'>
-                    <button type="submit">
+                    <label htmlFor='finalCode'>
+                      Code for this Theme
+                      <input type='text' name='finalCode' onChange={({ target }) => setFinalCode(target?.value)} />
+                    </label>
+                    <button  disabled={!finalCode} onClick={(e) => {
+                      e.preventDefault();
+                      props.handleSubmit();
+                    }}>
                       Submit for Review
                     </button>
                   </div>
