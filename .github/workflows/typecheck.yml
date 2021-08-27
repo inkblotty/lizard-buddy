@@ -6,9 +6,9 @@ on:
       - main
 
 jobs:
-  typechecktheme:
+  typecheck:
     runs-on: ubuntu-latest
-    name: typechecktheme
+    name: typecheck
     strategy:
       matrix:
         node-version: [14.x]
@@ -21,38 +21,11 @@ jobs:
       - name: Yarn install
         run: yarn install
       - name: Typecheck Theme
-        run: cd theme && yarn compile
-
-  typecheckserver:
-    runs-on: ubuntu-latest
-    name: typecheckserver
-    strategy:
-      matrix:
-        node-version: [14.x]
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Yarn install
-        run: yarn install
+        working-directory: theme
+        run: yarn compile
       - name: Typecheck Server
-        run: cd server && yarn compile
-
-  typecheckgui:
-    runs-on: ubuntu-latest
-    name: typecheckgui
-    strategy:
-      matrix:
-        node-version: [14.x]
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Yarn install
-        run: yarn install
+        working-directory: server
+        run: yarn compile
       - name: Typecheck Gui
-        run: cd gui && yarn build
+        working-directory: gui
+        run: yarn build
