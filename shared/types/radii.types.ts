@@ -3,4 +3,5 @@ export interface Radii {
   md: number;
   lg: number;
   xl: number;
+  full: number;
 }
