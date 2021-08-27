@@ -1,6 +1,6 @@
 import { Colors, isColor } from "./colors.types";
 import { Spacing } from "./spacing.types";
-import { Shadows } from './Shadows.types';
+import { Shadows } from './shadows.types';
 import { Typography } from "./typography.types";
 import { Radii } from "./radii.types";
 import { BorderWidths } from "./borderWidths.types";
