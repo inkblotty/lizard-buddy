@@ -8,6 +8,7 @@ const ${code.toUpperCase()}Radii: Radii = {
   md: ${input.md},
   lg: ${input.lg},
   xl: ${input.xl},
+  full: ${input.full},
 };
 export default ${code.toUpperCase()}Radii;
 `

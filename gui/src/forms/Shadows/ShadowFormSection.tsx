@@ -3,7 +3,7 @@ import { BaseTheme } from '@lb/shared';
 import ShadowInput from '../../inputs/ShadowInput';
 
 export interface ShadowFormSectionProps {
-  keys: (BaseTheme['shadows']['01'])[];
+  keys: (BaseTheme['shadows']['sm'])[];
   sectionTitle: string;
 };
 const ShadowFormSection: React.FC<ShadowFormSectionProps> = ({ sectionTitle, keys }) => {
