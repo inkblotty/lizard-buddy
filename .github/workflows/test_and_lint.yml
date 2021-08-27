@@ -1,0 +1,42 @@
+name: Test and Lint
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    # needs: [dependencies]
+    runs-on: ubuntu-latest
+    name: tests
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Yarn install
+        run: yarn install
+      - name: Test
+        run: CI=true yarn test
+    
+  lint:
+    # needs: [dependencies]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Yarn install
+        run: yarn install
+      - name: Lint
+        run: yarn lint src

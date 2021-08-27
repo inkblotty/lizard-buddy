@@ -1,0 +1,58 @@
+name: Test and Lint
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  typecheck-theme:
+    runs-on: ubuntu-latest
+    name: typecheck-theme
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Yarn install
+        run: yarn install
+      - name: Typecheck Theme
+        run: cd theme && yarn compile
+
+  typecheck-server:
+    runs-on: ubuntu-latest
+    name: typecheck-server
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Yarn install
+        run: yarn install
+      - name: Typecheck Server
+        run: cd server && yarn compile
+
+typecheck-gui:
+    runs-on: ubuntu-latest
+    name: typecheck-gui
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Yarn install
+        run: yarn install
+      - name: Typecheck Gui
+        run: cd gui && yarn build
