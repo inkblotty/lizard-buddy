@@ -16,7 +16,7 @@ function App() {
   const [notification, setNotification] = useState<NotificationProps>();
 
   // initial code populates the form
-  const [initialCode, setInitialCode] = useState<string>();
+  const [initialCode] = useState<string>();
 
   // final code is the code submitted for review
   const [finalCode, setFinalCode] = useState<string>();
