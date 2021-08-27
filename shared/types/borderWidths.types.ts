@@ -1,4 +1,4 @@
-export interface Spacing {
+export interface BorderWidths {
   xxs: number;
   xs: number;
   sm: number;
@@ -6,4 +6,4 @@ export interface Spacing {
   lg: number;
   xl: number;
   xxl: number;
-}
+};

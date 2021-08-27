@@ -1,0 +1,34 @@
+name: Typecheck
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    name: typecheck
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Yarn install
+        run: yarn install
+      - name: Setup
+        working-directory: gui
+        run: cp .env.example .env
+      - name: Typecheck Theme
+        working-directory: theme
+        run: yarn compile
+      - name: Typecheck Server
+        working-directory: server
+        run: yarn compile
+      - name: Typecheck Gui
+        working-directory: gui
+        run: yarn build

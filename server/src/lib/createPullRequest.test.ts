@@ -1,7 +1,6 @@
 const mockBranchName = 'boop';
 const mockOctokitRequest = jest.fn();
-class MockOctoKit {
-  super() {}
+class MockOctoKit extends jest.requireActual('@octokit/core').Octokit {
   public request = mockOctokitRequest;
 }
 jest.mock('@octokit/core', () => ({

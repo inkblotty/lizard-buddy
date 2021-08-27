@@ -8,7 +8,7 @@ const GH_ACCESS_TOKEN = process.env.GH_ACCESS_TOKEN;
 const CreaterOctokit = Octokit.plugin(createOrUpdateTextFile)
 const octokit = new CreaterOctokit({ auth: GH_ACCESS_TOKEN })
 
-if (!GH_ACCESS_TOKEN) {
+if (!GH_ACCESS_TOKEN && process.env.NODE_ENV === 'production') {
   throw new Error('No access token provided');
 }
 
