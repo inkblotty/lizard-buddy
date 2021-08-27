@@ -1,6 +1,6 @@
 import { FontSizes } from "@lb/shared/types/fontSizes.types";
 
-const baseFontSizes: FontSizes = {
+const backupFontSizes: FontSizes = {
   xs: '8px',
   sm: '12px',
   md: '16px',
@@ -10,4 +10,4 @@ const baseFontSizes: FontSizes = {
   '3xl': '52px',
   '4xl': '64px',
 };
-export default baseFontSizes;
+export default backupFontSizes;
