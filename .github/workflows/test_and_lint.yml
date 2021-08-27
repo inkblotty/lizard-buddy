@@ -20,8 +20,12 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Yarn install
         run: yarn install
-      - name: Test
-        run: cd server && CI=true yarn test
+      - name: Test Server
+        working-directory: server
+        run: CI=true yarn test
+      - name: Test Theme
+        working-directory: theme
+        run: CI=true yarn test
     
   # lint:
   #   # needs: [dependencies]
