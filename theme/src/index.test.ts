@@ -12,7 +12,7 @@ import XXRadii from './radii/XX';
 import XXSpacing from './spacing/XX';
 import XXTypography from './typography/XX';
 
-const outputThemeKeys = ['colors', 'shadows', 'radii', 'spacing', 'typography'];
+const outputThemeKeys = ['isDefaultTheme', 'borderWidths', 'colors', 'shadows', 'radii', 'spacing', 'typography', 'zIndices'];
 
 describe('getTheme', () => {
   test('returns the backups if no code is passed in', () => {

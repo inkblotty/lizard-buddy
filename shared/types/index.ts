@@ -3,6 +3,7 @@ import { Spacing } from "./spacing.types";
 import { Shadows } from './Shadows.types';
 import { Typography } from "./typography.types";
 import { Radii } from "./radii.types";
+import { BorderWidths } from "./borderWidths.types";
 
 export {
   isColor,
@@ -10,6 +11,7 @@ export {
 
 export interface BaseTheme {
   isDefaultTheme?: boolean;
+  borderWidths: BorderWidths;
   colors: Colors;
   shadows: Shadows; // rename Shadows
   radii: Radii;
