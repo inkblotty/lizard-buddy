@@ -4,10 +4,10 @@ const parseShadows = (input: BaseTheme['shadows'], code: string): string => {
   return `import { Shadows } from "@lb/shared";
 
 const ${code.toUpperCase()}Shadows: Shadows = {
-  '01': '${input['01']}',
-  '02': '${input['02']},
-  '03': '${input['03']}',
-  '04': '${input['04']}',
+  sm: '${input['sm']}',
+  md: '${input['md']},
+  lg: '${input['lg']}',
+  xl: '${input['xl']}',
 };
 export default ${code.toUpperCase()}Shadows;
 `
