@@ -6,9 +6,9 @@ on:
       - main
 
 jobs:
-  typecheck-theme:
+  typechecktheme:
     runs-on: ubuntu-latest
-    name: typecheck-theme
+    name: typechecktheme
     strategy:
       matrix:
         node-version: [14.x]
@@ -23,9 +23,9 @@ jobs:
       - name: Typecheck Theme
         run: cd theme && yarn compile
 
-  typecheck-server:
+  typecheckserver:
     runs-on: ubuntu-latest
-    name: typecheck-server
+    name: typecheckserver
     strategy:
       matrix:
         node-version: [14.x]
@@ -40,9 +40,9 @@ jobs:
       - name: Typecheck Server
         run: cd server && yarn compile
 
-typecheck-gui:
+  typecheckgui:
     runs-on: ubuntu-latest
-    name: typecheck-gui
+    name: typecheckgui
     strategy:
       matrix:
         node-version: [14.x]
